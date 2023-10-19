@@ -8,7 +8,7 @@ const openai = new OpenAIApi(config)
 
 export async function GET() {
 	const response = await openai.createChatCompletion({
-		messages: [{ role: 'system', content: 'My name is Eduardo' }],
+		messages: [{ role: 'system', content: 'You are a helpful assistant' }],
 		model: 'gpt-3.5-turbo',
 		temperature: 0.9,
 		max_tokens: 150,

@@ -6,7 +6,7 @@ import React from 'react'
 
 // Configure OpenAI Auth
 const config = new Configuration({
-	apiKey: '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',
+	apiKey: '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',
 })
 const openai = new OpenAIApi(config)
 
@@ -14,11 +14,11 @@ export default function CreateForm() {
 	const router = useRouter()
 
 	const [model, setModel] = useState('')
-	const [temperature, setTemperature] = useState<number | null | undefined>(null)
-	const [max_tokens, setMax_tokens] = useState<number | undefined>(undefined)
+	const [temperature, setTemperature] = useState(1)
+	const [max_tokens, setMax_tokens] = useState(100)
 	const [isLoading, setIsLoading] = useState(false)
 
-	const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault()
 		setIsLoading(true)
 
