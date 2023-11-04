@@ -1,7 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import { Configuration, OpenAIApi } from 'openai-edge'
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEventHandler, useState } from 'react'
 import React from 'react'
 
 // Configure OpenAI Auth
@@ -18,7 +18,7 @@ export default function CreateForm() {
 	const [max_tokens, setMax_tokens] = useState(100)
 	const [isLoading, setIsLoading] = useState(false)
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e: FormEventHandler<HTMLFormElement>) => {
 		e.preventDefault()
 		setIsLoading(true)
 

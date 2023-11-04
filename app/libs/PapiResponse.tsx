@@ -5,17 +5,24 @@ const config = new Configuration({
 })
 const openai = new OpenAIApi(config)
 
-export default async function ApiResponse() {
+type Chatbot = {
+	model: string
+	message_content: string
+	temperature: number | null
+	max_tokens: number | null
+}
+
+export default async function ApiResponse(chatbot: Chatbot) {
+	const { model, message_content, temperature, max_tokens } = chatbot
+
 	const response = await openai.createChatCompletion({
-		messages: [{ role: 'system', content: 'My name is Luca' }],
-		model: 'gpt-3.5-turbo',
-		temperature: 0.9,
-		max_tokens: 150,
+		messages: [{ role: 'system', content: message_content }],
+		model: model,
+		temperature: temperature ?? 0.9,
+		max_tokens: max_tokens ?? 150,
 	})
 
 	const data = await response.json()
 
-	// console.log(data)
-	// return data.choices[0].message
 	return data
 }
